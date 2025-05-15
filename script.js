@@ -1,11 +1,15 @@
 import { PlatformSelector } from './src/components/PlatformSelector.js';
-import { SubjectList } from './src/components/SubjectList.js';
+import { MarrowSubjectList } from './src/platforms/marrow/MarrowSubjectList.js';
+import { DamsSubjectList } from './src/platforms/dams/DamsSubjectList.js';
+import { PrepladderSubjectList } from './src/platforms/prepladder/PrepladderSubjectList.js';
 import { LectureList } from './src/components/LectureList.js';
 
 class App {
   constructor() {
     this.platformSelector = new PlatformSelector();
-    this.subjectList = new SubjectList();
+    this.marrowSubjectList = new MarrowSubjectList();
+    this.damsSubjectList = new DamsSubjectList();
+    this.prepladderSubjectList = new PrepladderSubjectList();
     this.lectureList = new LectureList();
     this.selectedPlatform = null;
     this.selectedSubject = null;
@@ -32,7 +36,6 @@ class App {
       this.handleSearch(e.target.value);
     });
 
-    // Add back button functionality
     const backBtn = document.getElementById('backBtn');
     backBtn.addEventListener('click', () => this.handleBack());
 
@@ -88,7 +91,21 @@ class App {
     } else if (this.currentView === 'subjects') {
       pageTitle.textContent = `${this.selectedPlatform.toUpperCase()} Subjects`;
       backBtn.style.display = 'block';
-      main.appendChild(this.subjectList.render(this.selectedPlatform));
+      
+      let subjectList;
+      switch(this.selectedPlatform) {
+        case 'marrow':
+          subjectList = this.marrowSubjectList;
+          break;
+        case 'dams':
+          subjectList = this.damsSubjectList;
+          break;
+        case 'prepladder':
+          subjectList = this.prepladderSubjectList;
+          break;
+      }
+      
+      main.appendChild(subjectList.render(this.selectedPlatform));
     } else if (this.currentView === 'lectures') {
       pageTitle.textContent = `${this.selectedSubject} Lectures`;
       backBtn.style.display = 'block';
