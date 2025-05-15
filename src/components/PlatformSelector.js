@@ -1,16 +1,22 @@
 export class PlatformSelector {
   constructor() {
-    this.platforms = ['marrow', 'dams', 'prepladder'];
-  }
-
-  async loadSubjects(platform) {
-    try {
-      const response = await fetch(`/src/platforms/${platform}/subjects.json`);
-      return await response.json();
-    } catch (error) {
-      console.error(`Error loading subjects for ${platform}:`, error);
-      return [];
-    }
+    this.platforms = [
+      {
+        name: 'marrow',
+        icon: 'fas fa-brain',
+        description: 'Comprehensive NEET-PG Preparation'
+      },
+      {
+        name: 'dams',
+        icon: 'fas fa-graduation-cap',
+        description: 'Expert-led Medical Education'
+      },
+      {
+        name: 'prepladder',
+        icon: 'fas fa-laptop-medical',
+        description: 'Smart NEET-PG Learning'
+      }
+    ];
   }
 
   render() {
@@ -19,8 +25,12 @@ export class PlatformSelector {
 
     this.platforms.forEach(platform => {
       const button = document.createElement('button');
-      button.textContent = platform.toUpperCase();
-      button.onclick = () => this.handlePlatformSelect(platform);
+      button.innerHTML = `
+        <i class="${platform.icon}"></i>
+        <span class="platform-name">${platform.name.toUpperCase()}</span>
+        <span class="platform-description">${platform.description}</span>
+      `;
+      button.onclick = () => this.handlePlatformSelect(platform.name);
       container.appendChild(button);
     });
 
@@ -29,6 +39,4 @@ export class PlatformSelector {
 
   handlePlatformSelect(platform) {
     const event = new CustomEvent('platformSelect', { detail: platform });
-    document.dispatchEvent(event);
-  }
-}
+    document.dispatchEvent(
