@@ -1,9 +1,7 @@
 {
   "subjectName": "Anatomy",
   "lectures": [
-    {
-      "title": "Approach to case of suspected Meningitis",
-      "streamingUrl": "https://stream1.nextpulse.workers.dev/watch/194711/164+Approach+to+case+of+suspected+Meningitis+yw.mp4?hash=AgADsB"
-    }
+    { "title": "Approach to case of suspected Meningitis", "streamingUrl": "https://stream1.nextpulse.workers.dev/watch/194711/164+Approach+to+case+of+suspected+Meningitis+yw.mp4?hash=AgADsB" },
+    { "title": "Test Lecture on Neuroanatomy", "streamingUrl": "https://stream2.nextpulse.workers.dev/watch/194712/Test+Lecture+on+Neuroanatomy.mp4?hash=BgADxC" }
   ]
 }
