@@ -7,7 +7,7 @@ export class LectureList {
     try {
       // Get the base URL for GitHub Pages
       const baseUrl = window.location.hostname === 'tk22kalal2.github.io' 
-        ? '/web-app2/src/platforms'
+        ? '/web-app3/src/platforms'
         : '/src/platforms';
       
       const response = await fetch(`${baseUrl}/${platform}/subjects/${subject.toLowerCase()}.json`);
