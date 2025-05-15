@@ -1,23 +1,26 @@
 export class SubjectList {
   constructor() {
     this.subjects = [
-      'Anatomy', 'Physiology', 'Biochemistry', 'Pathology',
-      'Microbiology', 'Pharmacology', 'Forensic Medicine',
-      'ENT', 'Ophthalmology', 'Community Medicine',
-      'Medicine', 'Surgery', 'Obstetrics', 'Gynecology',
-      'Pediatrics', 'Orthopedics', 'Radiology',
-      'Anesthesia', 'Psychiatry'
+      { name: 'Anatomy', icon: 'fas fa-skeleton' },
+      { name: 'Physiology', icon: 'fas fa-heartbeat' },
+      { name: 'Biochemistry', icon: 'fas fa-flask' },
+      { name: 'Pathology', icon: 'fas fa-microscope' },
+      { name: 'Microbiology', icon: 'fas fa-bacteria' },
+      { name: 'Pharmacology', icon: 'fas fa-pills' },
+      { name: 'Forensic Medicine', icon: 'fas fa-search' },
+      { name: 'ENT', icon: 'fas fa-ear' },
+      { name: 'Ophthalmology', icon: 'fas fa-eye' },
+      { name: 'Community Medicine', icon: 'fas fa-users' },
+      { name: 'Medicine', icon: 'fas fa-stethoscope' },
+      { name: 'Surgery', icon: 'fas fa-procedures' },
+      { name: 'Obstetrics', icon: 'fas fa-baby' },
+      { name: 'Gynecology', icon: 'fas fa-female' },
+      { name: 'Pediatrics', icon: 'fas fa-child' },
+      { name: 'Orthopedics', icon: 'fas fa-bone' },
+      { name: 'Radiology', icon: 'fas fa-x-ray' },
+      { name: 'Anesthesia', icon: 'fas fa-syringe' },
+      { name: 'Psychiatry', icon: 'fas fa-brain' }
     ];
-  }
-
-  async loadLectures(platform, subject) {
-    try {
-      const response = await fetch(`/src/platforms/${platform}/subjects/${subject.toLowerCase()}.json`);
-      return await response.json();
-    } catch (error) {
-      console.error(`Error loading lectures for ${subject}:`, error);
-      return [];
-    }
   }
 
   render(selectedPlatform) {
@@ -27,8 +30,11 @@ export class SubjectList {
     this.subjects.forEach(subject => {
       const subjectCard = document.createElement('div');
       subjectCard.className = 'subject-card';
-      subjectCard.textContent = subject;
-      subjectCard.onclick = () => this.handleSubjectSelect(selectedPlatform, subject);
+      subjectCard.innerHTML = `
+        <i class="${subject.icon}"></i>
+        <span>${subject.name}</span>
+      `;
+      subjectCard.onclick = () => this.handleSubjectSelect(selectedPlatform, subject.name);
       container.appendChild(subjectCard);
     });
 
