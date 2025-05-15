@@ -38,5 +38,7 @@ export class PlatformSelector {
   }
 
   handlePlatformSelect(platform) {
-    const event = new CustomEvent('platformSelect', { detail: platform });
-    document.dispatchEvent(
+    const event = new CustomEvent('platformSelect', { detail: platform });    
+    document.dispatchEvent(event);
+  }
+}
