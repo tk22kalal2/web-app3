@@ -1,26 +1,26 @@
 export class MarrowSubjectList {
   constructor() {
     this.subjects = [
-      { name: 'Anatomy', icon: 'fas fa-skeleton' },
-      { name: 'Physiology', icon: 'fas fa-heartbeat' },
-      { name: 'Biochemistry', icon: 'fas fa-flask' },
-      { name: 'Pathology', icon: 'fas fa-microscope' },
-      { name: 'Microbiology', icon: 'fas fa-bacteria' },
-      { name: 'Pharmacology', icon: 'fas fa-pills' },
-      { name: 'Forensic Medicine', icon: 'fas fa-search' },
-      { name: 'ENT', icon: 'fas fa-ear' },
-      { name: 'Ophthalmology', icon: 'fas fa-eye' },
-      { name: 'Community Medicine', icon: 'fas fa-users' },
-      { name: 'Medicine', icon: 'fas fa-stethoscope' },
-      { name: 'Surgery', icon: 'fas fa-procedures' },
-      { name: 'Obstetrics', icon: 'fas fa-baby' },
-      { name: 'Gynecology', icon: 'fas fa-female' },
-      { name: 'Pediatrics', icon: 'fas fa-child' },
-      { name: 'Orthopedics', icon: 'fas fa-bone' },
-      { name: 'Radiology', icon: 'fas fa-x-ray' },
-      { name: 'Anesthesia', icon: 'fas fa-syringe' },
-      { name: 'Psychiatry', icon: 'fas fa-brain' },
-      { name: 'Emergency Medicine', icon: 'fas fa-ambulance' }
+      { name: 'Anatomy', icon: 'fas fa-skeleton', teacher: 'Dr. Rajesh Kaushal' },
+      { name: 'Physiology', icon: 'fas fa-heartbeat', teacher: 'Dr. Vinay Jain' },
+      { name: 'Biochemistry', icon: 'fas fa-flask', teacher: 'Dr. Rebecca James' },
+      { name: 'Pathology', icon: 'fas fa-microscope', teacher: 'Dr. Sumer Sethi' },
+      { name: 'Microbiology', icon: 'fas fa-bacteria', teacher: 'Dr. Apurba S. Sastry' },
+      { name: 'Pharmacology', icon: 'fas fa-pills', teacher: 'Dr. Gobind Rai Garg' },
+      { name: 'Forensic Medicine', icon: 'fas fa-search', teacher: 'Dr. Anil Aggrawal' },
+      { name: 'ENT', icon: 'fas fa-ear', teacher: 'Dr. P.L. Dhingra' },
+      { name: 'Ophthalmology', icon: 'fas fa-eye', teacher: 'Dr. A.K. Khurana' },
+      { name: 'Community Medicine', icon: 'fas fa-users', teacher: 'Dr. Vivek Jain' },
+      { name: 'Medicine', icon: 'fas fa-stethoscope', teacher: 'Dr. Amit Ashish' },
+      { name: 'Surgery', icon: 'fas fa-procedures', teacher: 'Dr. Rohan Khandelwal' },
+      { name: 'Obstetrics', icon: 'fas fa-baby', teacher: 'Dr. Sakshi Arora' },
+      { name: 'Gynecology', icon: 'fas fa-female', teacher: 'Dr. Richa Saxena' },
+      { name: 'Pediatrics', icon: 'fas fa-child', teacher: 'Dr. Meenakshi Bothra' },
+      { name: 'Orthopedics', icon: 'fas fa-bone', teacher: 'Dr. Tushar Mehta' },
+      { name: 'Radiology', icon: 'fas fa-x-ray', teacher: 'Dr. Chandra Mohan' },
+      { name: 'Anesthesia', icon: 'fas fa-syringe', teacher: 'Dr. Amit Kumar' },
+      { name: 'Psychiatry', icon: 'fas fa-brain', teacher: 'Dr. Neeraj Bhalla' },
+      { name: 'Emergency Medicine', icon: 'fas fa-ambulance', teacher: 'Dr. Pradeep Sharma' }
     ];
   }
 
@@ -33,7 +33,8 @@ export class MarrowSubjectList {
       subjectCard.className = 'subject-card';
       subjectCard.innerHTML = `
         <i class="${subject.icon}"></i>
-        <span>${subject.name}</span>
+        <span class="subject-name">${subject.name}</span>
+        <span class="teacher-name">${subject.teacher}</span>
       `;
       subjectCard.onclick = () => this.handleSubjectSelect(selectedPlatform, subject.name);
       container.appendChild(subjectCard);
