@@ -154,12 +154,25 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .subject-card i {
   font-size: 2rem;
   color: #2c5282;
+  margin-bottom: 0.5rem;
+}
+
+.subject-card .subject-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.subject-card .teacher-name {
+  font-size: 0.85rem;
+  color: #718096;
+  font-weight: 400;
 }
 
 .subject-card:hover {
@@ -169,7 +182,9 @@ main {
   color: white;
 }
 
-.subject-card:hover i {
+.subject-card:hover i,
+.subject-card:hover .subject-name,
+.subject-card:hover .teacher-name {
   color: white;
 }
 
