@@ -3,6 +3,7 @@ import { MarrowSubjectList } from './src/platforms/marrow/MarrowSubjectList.js';
 import { DamsSubjectList } from './src/platforms/dams/DamsSubjectList.js';
 import { PrepladderSubjectList } from './src/platforms/prepladder/PrepladderSubjectList.js';
 import { LectureList } from './src/components/LectureList.js';
+import { SearchPage } from './src/search/SearchPage.js';
 
 class App {
   constructor() {
@@ -11,9 +12,10 @@ class App {
     this.damsSubjectList = new DamsSubjectList();
     this.prepladderSubjectList = new PrepladderSubjectList();
     this.lectureList = new LectureList();
+    this.searchPage = new SearchPage();
     this.selectedPlatform = null;
     this.selectedSubject = null;
-    this.currentView = 'platforms'; // 'platforms', 'subjects', or 'lectures'
+    this.currentView = 'platforms'; // 'platforms', 'subjects', 'lectures', or 'search'
 
     this.init();
   }
@@ -38,6 +40,25 @@ class App {
 
     const backBtn = document.getElementById('backBtn');
     backBtn.addEventListener('click', () => this.handleBack());
+
+    // Add navigation handling
+    const bottomNav = document.querySelector('.bottom-nav');
+    bottomNav.addEventListener('click', (e) => {
+      const navItem = e.target.closest('a');
+      if (!navItem) return;
+
+      e.preventDefault();
+      const navItems = bottomNav.querySelectorAll('a');
+      navItems.forEach(item => item.classList.remove('active'));
+      navItem.classList.add('active');
+
+      if (navItem.querySelector('span').textContent === 'Search') {
+        this.currentView = 'search';
+      } else if (navItem.querySelector('span').textContent === 'Dashboard') {
+        this.currentView = 'platforms';
+      }
+      this.updateView();
+    });
 
     this.updateView();
   }
@@ -84,7 +105,11 @@ class App {
     const pageTitle = document.getElementById('pageTitle');
     const backBtn = document.getElementById('backBtn');
     
-    if (this.currentView === 'platforms') {
+    if (this.currentView === 'search') {
+      pageTitle.textContent = 'Search';
+      backBtn.style.display = 'none';
+      main.appendChild(this.searchPage.render());
+    } else if (this.currentView === 'platforms') {
       pageTitle.textContent = 'Select Platform';
       backBtn.style.display = 'none';
       main.appendChild(this.platformSelector.render());
