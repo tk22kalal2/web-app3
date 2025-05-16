@@ -1,6 +1,82 @@
 export class SearchPage {
   constructor() {
     this.currentView = 'search';
+    this.platforms = ['marrow', 'dams', 'prepladder'];
+    this.subjects = ['anatomy', 'physiology'];
+  }
+
+  async getAllTeachers() {
+    const teachers = [];
+    
+    // Import all platform subject lists
+    const marrowList = await import('../platforms/marrow/MarrowSubjectList.js');
+    const damsList = await import('../platforms/dams/DamsSubjectList.js');
+    const prepladderList = await import('../platforms/prepladder/PrepladderSubjectList.js');
+    
+    const marrowTeachers = new marrowList.MarrowSubjectList().subjects;
+    const damsTeachers = new damsList.DamsSubjectList().subjects;
+    const prepladderTeachers = new prepladderList.PrepladderSubjectList().subjects;
+    
+    // Format teacher data from each platform
+    marrowTeachers.forEach(subject => {
+      if (subject.teacher) {
+        teachers.push({
+          name: subject.teacher,
+          subject: subject.name,
+          platform: 'Marrow'
+        });
+      }
+    });
+
+    damsTeachers.forEach(subject => {
+      if (subject.teacher) {
+        teachers.push({
+          name: subject.teacher,
+          subject: subject.name,
+          platform: 'DAMS'
+        });
+      }
+    });
+
+    prepladderTeachers.forEach(subject => {
+      if (subject.teacher) {
+        teachers.push({
+          name: subject.teacher,
+          subject: subject.name,
+          platform: 'Prepladder'
+        });
+      }
+    });
+
+    return teachers;
+  }
+
+  async getAllLectures() {
+    const lectures = [];
+    
+    for (const platform of this.platforms) {
+      for (const subject of this.subjects) {
+        try {
+          const response = await fetch(`/src/platforms/${platform}/subjects/${subject}.json`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.lectures) {
+              data.lectures.forEach(lecture => {
+                lectures.push({
+                  ...lecture,
+                  subject: data.subjectName,
+                  platform: platform.charAt(0).toUpperCase() + platform.slice(1)
+                });
+              });
+            }
+          }
+        } catch (error) {
+          console.error(`Error loading lectures for ${platform}/${subject}:`, error);
+        }
+      }
+    }
+    
+    return lectures;
   }
 
   render() {
@@ -28,7 +104,7 @@ export class SearchPage {
     const resultsContainer = document.createElement('div');
     resultsContainer.className = 'search-results';
 
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener('input', async (e) => {
       const searchType = searchTypeSelect.value;
       const query = e.target.value.toLowerCase();
       
@@ -38,9 +114,19 @@ export class SearchPage {
       }
 
       if (searchType === 'teacher') {
-        this.searchTeachers(query, resultsContainer);
+        const teachers = await this.getAllTeachers();
+        const results = teachers.filter(teacher => 
+          teacher.name.toLowerCase().includes(query) ||
+          teacher.subject.toLowerCase().includes(query)
+        );
+        this.displayTeacherResults(results, resultsContainer);
       } else {
-        this.searchLectures(query, resultsContainer);
+        const lectures = await this.getAllLectures();
+        const results = lectures.filter(lecture =>
+          lecture.title.toLowerCase().includes(query) ||
+          lecture.subject.toLowerCase().includes(query)
+        );
+        this.displayLectureResults(results, resultsContainer);
       }
     });
 
@@ -58,38 +144,6 @@ export class SearchPage {
     return container;
   }
 
-  searchTeachers(query, resultsContainer) {
-    // Mock teacher data - replace with actual data
-    const teachers = [
-      { name: 'Dr. Sneh Agarwal', subject: 'Anatomy', platform: 'Marrow' },
-      { name: 'Dr. Sakshi Arora', subject: 'Physiology', platform: 'DAMS' },
-      { name: 'Dr. Gobind Rai', subject: 'Biochemistry', platform: 'Prepladder' }
-    ];
-
-    const results = teachers.filter(teacher => 
-      teacher.name.toLowerCase().includes(query) ||
-      teacher.subject.toLowerCase().includes(query)
-    );
-
-    this.displayTeacherResults(results, resultsContainer);
-  }
-
-  searchLectures(query, resultsContainer) {
-    // Mock lecture data - replace with actual data
-    const lectures = [
-      { title: 'Cranial Nerves', subject: 'Anatomy', platform: 'Marrow' },
-      { title: 'Cardiac Cycle', subject: 'Physiology', platform: 'DAMS' },
-      { title: 'Protein Metabolism', subject: 'Biochemistry', platform: 'Prepladder' }
-    ];
-
-    const results = lectures.filter(lecture =>
-      lecture.title.toLowerCase().includes(query) ||
-      lecture.subject.toLowerCase().includes(query)
-    );
-
-    this.displayLectureResults(results, resultsContainer);
-  }
-
   displayTeacherResults(results, container) {
     if (results.length === 0) {
       container.innerHTML = '<p class="no-results">No teachers found</p>';
@@ -97,7 +151,7 @@ export class SearchPage {
     }
 
     container.innerHTML = results.map(teacher => `
-      <div class="search-result-card">
+      <div class="search-result-card" onclick="document.dispatchEvent(new CustomEvent('platformSelect', { detail: '${teacher.platform.toLowerCase()}' }))">
         <div class="result-header">
           <i class="fas fa-user-md"></i>
           <h3>${teacher.name}</h3>
@@ -117,7 +171,7 @@ export class SearchPage {
     }
 
     container.innerHTML = results.map(lecture => `
-      <div class="search-result-card">
+      <div class="search-result-card" onclick="document.dispatchEvent(new CustomEvent('subjectSelect', { detail: { platform: '${lecture.platform.toLowerCase()}', subject: '${lecture.subject}' } }))">
         <div class="result-header">
           <i class="fas fa-play-circle"></i>
           <h3>${lecture.title}</h3>
