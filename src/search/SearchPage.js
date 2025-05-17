@@ -53,11 +53,14 @@ export class SearchPage {
 
   async getAllLectures() {
     const lectures = [];
+    const baseUrl = window.location.hostname === 'tk22kalal2.github.io' 
+      ? '/web-app3/src/platforms'
+      : '/src/platforms';
     
     for (const platform of this.platforms) {
       for (const subject of this.subjects) {
         try {
-          const response = await fetch(`/src/platforms/${platform}/subjects/${subject}.json`);
+          const response = await fetch(`${baseUrl}/${platform}/subjects/${subject}.json`);
           if (response.ok) {
             const data = await response.json();
             if (data.lectures) {
@@ -88,7 +91,7 @@ export class SearchPage {
 
     const searchBar = document.createElement('div');
     searchBar.className = 'enhanced-search-bar';
-    
+
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.placeholder = 'Search...';
@@ -163,7 +166,6 @@ export class SearchPage {
       </div>
     `).join('');
   }
-
   displayLectureResults(results, container) {
     if (results.length === 0) {
       container.innerHTML = '<p class="no-results">No lectures found</p>';
