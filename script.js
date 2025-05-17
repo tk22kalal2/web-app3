@@ -4,6 +4,7 @@ import { DamsSubjectList } from './src/platforms/dams/DamsSubjectList.js';
 import { PrepladderSubjectList } from './src/platforms/prepladder/PrepladderSubjectList.js';
 import { LectureList } from './src/components/LectureList.js';
 import { SearchPage } from './src/search/SearchPage.js';
+import { HomePage } from './src/home/HomePage.js';
 
 class App {
   constructor() {
@@ -13,9 +14,10 @@ class App {
     this.prepladderSubjectList = new PrepladderSubjectList();
     this.lectureList = new LectureList();
     this.searchPage = new SearchPage();
+    this.homePage = new HomePage();
     this.selectedPlatform = null;
     this.selectedSubject = null;
-    this.currentView = 'platforms'; // 'platforms', 'subjects', 'lectures', or 'search'
+    this.currentView = 'home'; // 'home', 'platforms', 'subjects', 'lectures', or 'search'
 
     this.init();
   }
@@ -52,10 +54,20 @@ class App {
       navItems.forEach(item => item.classList.remove('active'));
       navItem.classList.add('active');
 
-      if (navItem.querySelector('span').textContent === 'Search') {
-        this.currentView = 'search';
-      } else if (navItem.querySelector('span').textContent === 'Dashboard') {
-        this.currentView = 'platforms';
+      const navText = navItem.querySelector('span').textContent;
+      switch(navText) {
+        case 'Home':
+          this.currentView = 'home';
+          break;
+        case 'Videos':
+          this.currentView = 'platforms';
+          break;
+        case 'Search':
+          this.currentView = 'search';
+          break;
+        case 'Q Bank':
+          // Handle Q Bank view when implemented
+          break;
       }
       this.updateView();
     });
@@ -98,14 +110,18 @@ class App {
     }
   }
 
-  updateView() {
+  async updateView() {
     const main = document.querySelector('main');
     main.innerHTML = '';
     
     const pageTitle = document.getElementById('pageTitle');
     const backBtn = document.getElementById('backBtn');
     
-    if (this.currentView === 'search') {
+    if (this.currentView === 'home') {
+      pageTitle.textContent = 'NEXTPULSE';
+      backBtn.style.display = 'none';
+      main.appendChild(await this.homePage.render());
+    } else if (this.currentView === 'search') {
       pageTitle.textContent = 'Search';
       backBtn.style.display = 'none';
       main.appendChild(this.searchPage.render());
