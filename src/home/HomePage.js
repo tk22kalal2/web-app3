@@ -7,6 +7,11 @@ export class HomePage {
     this.selectedAnswer = null;
   }
 
+  getTodayDateKey() {
+    const today = new Date();
+    return today.toISOString().split('T')[0]; // "YYYY-MM-DD"
+  }
+
   async fetchFromGroq(prompt) {
     try {
       const response = await fetch(this.GROQ_API_URL, {
@@ -24,7 +29,6 @@ export class HomePage {
       });
 
       const data = await response.json();
-      // Check if data.choices exists and has at least one element
       return data.choices && data.choices.length > 0 ? data.choices[0].message.content : null;
     } catch (error) {
       console.error('Error fetching from Groq:', error);
@@ -33,57 +37,56 @@ export class HomePage {
   }
 
   async getDailyQuote() {
+    const key = `dailyQuote-${this.getTodayDateKey()}`;
+    const cached = localStorage.getItem(key);
+    if (cached) return JSON.parse(cached);
+
     const prompt = "Generate an inspiring medical quote for NEET-PG aspirants. Format: JSON with 'quote' and 'author' fields. Make it motivational and relevant to medical studies.";
     const response = await this.fetchFromGroq(prompt);
-    try {
-      return response ? JSON.parse(response) : { quote: "The art of medicine consists of amusing the patient while nature cures the disease.", author: "Voltaire" };
-    } catch {
-      return { quote: "The art of medicine consists of amusing the patient while nature cures the disease.", author: "Voltaire" };
-    }
+    const quote = response ? JSON.parse(response) : {
+      quote: "The art of medicine consists of amusing the patient while nature cures the disease.",
+      author: "Voltaire"
+    };
+
+    localStorage.setItem(key, JSON.stringify(quote));
+    return quote;
   }
 
   async getDailyMCQ() {
+    const key = `dailyMCQ-${this.getTodayDateKey()}`;
+    const cached = localStorage.getItem(key);
+    if (cached) return JSON.parse(cached);
+
     const prompt = "Generate a challenging NEET-PG level MCQ question. Format: JSON with 'question', 'options' (array of 4), 'correctAnswer' (index 0-3), and 'explanation' fields. Make it high quality and educational.";
     const response = await this.fetchFromGroq(prompt);
-    try {
-      return response ? JSON.parse(response) : {
-        question: "Which of the following is a characteristic feature of Parkinson's disease?",
-        options: [
-          "Pill-rolling tremor",
-          "Intention tremor",
-          "Flapping tremor",
-          "Resting tremor"
-        ],
-        correctAnswer: 0,
-        explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease. It's a resting tremor that appears as if the patient is rolling a pill between thumb and index finger."
-      };
-    } catch {
-      return {
-        question: "Which of the following is a characteristic feature of Parkinson's disease?",
-        options: [
-          "Pill-rolling tremor",
-          "Intention tremor",
-          "Flapping tremor",
-          "Resting tremor"
-        ],
-        correctAnswer: 0,
-        explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease. It's a resting tremor that appears as if the patient is rolling a pill between thumb and index finger."
-      };
-    }
+    const mcq = response ? JSON.parse(response) : {
+      question: "Which of the following is a characteristic feature of Parkinson's disease?",
+      options: [
+        "Pill-rolling tremor",
+        "Intention tremor",
+        "Flapping tremor",
+        "Resting tremor"
+      ],
+      correctAnswer: 0,
+      explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease. It's a resting tremor that appears as if the patient is rolling a pill between thumb and index finger."
+    };
+
+    localStorage.setItem(key, JSON.stringify(mcq));
+    return mcq;
   }
 
   handleOptionClick(optionIndex) {
     if (this.selectedAnswer !== null) return;
-    
+
     this.selectedAnswer = optionIndex;
     const options = document.querySelectorAll('.mcq-option');
     const correctAnswer = this.currentMCQ.correctAnswer;
-    
+
     options[optionIndex].classList.add(optionIndex === correctAnswer ? 'correct' : 'incorrect');
     if (optionIndex !== correctAnswer) {
       options[correctAnswer].classList.add('correct');
     }
-    
+
     document.querySelector('.mcq-explanation').style.display = 'block';
   }
 
@@ -124,7 +127,7 @@ export class HomePage {
       </div>
     `;
 
-    // Add event listeners to options
+    // Add event listeners
     mcqSection.querySelectorAll('.mcq-option').forEach((option, index) => {
       option.addEventListener('click', () => this.handleOptionClick(index));
     });
