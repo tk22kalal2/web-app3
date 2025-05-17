@@ -5,11 +5,23 @@ export class HomePage {
     this.currentQuote = null;
     this.currentMCQ = null;
     this.selectedAnswer = null;
+    this.currentDateKey = this.getTodayDateKey();
+
+    // Check every minute if date changed
+    setInterval(() => {
+      const newKey = this.getTodayDateKey();
+      if (newKey !== this.currentDateKey) {
+        window.location.reload();
+      }
+    }, 60000); // Check every minute
   }
 
   getTodayDateKey() {
     const today = new Date();
-    return today.toISOString().split('T')[0]; // "YYYY-MM-DD"
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   async fetchFromGroq(prompt) {
