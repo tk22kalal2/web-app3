@@ -1,7 +1,5 @@
 export class HomePage {
   constructor() {
-    // Use a shared cache key that's the same for all users
-    this.SHARED_CACHE_KEY = "neetpg-daily-content";
     this.GROQ_API_KEY = "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";
     this.GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
     this.currentQuote = null;
@@ -9,7 +7,7 @@ export class HomePage {
     this.selectedAnswer = null;
     this.currentDateKey = this.getTodayDateKey();
 
-    // Check daily for date changes
+    // Reload page if date changes
     setInterval(() => {
       const newKey = this.getTodayDateKey();
       if (newKey !== this.currentDateKey) {
@@ -58,51 +56,32 @@ export class HomePage {
     }
   }
 
-  async getSharedDailyContent() {
-    // Check if we have valid content for today
-    const sharedCache = JSON.parse(localStorage.getItem(this.SHARED_CACHE_KEY) || {};
-    
-    if (sharedCache.dateKey === this.currentDateKey) {
-      return sharedCache;
-    }
+  async getDailyQuote() {
+    const key = `dailyQuote-${this.currentDateKey}`;
+    const cached = localStorage.getItem(key);
+    if (cached) return JSON.parse(cached);
 
-    // Generate new content only if not already created today
-    if (!sharedCache.isGeneratedToday) {
-      console.log("Generating new daily content...");
-      const [quote, mcq] = await Promise.all([
-        this.generateQuote(),
-        this.generateMCQ()
-      ]);
-
-      // Update shared cache with new content
-      const newCache = {
-        dateKey: this.currentDateKey,
-        isGeneratedToday: true,
-        quote,
-        mcq
-      };
-      
-      localStorage.setItem(this.SHARED_CACHE_KEY, JSON.stringify(newCache));
-      return newCache;
-    }
-
-    // If already generated but date changed, wait for next refresh
-    return null;
-  }
-
-  async generateQuote() {
-    const prompt = `Generate a unique, inspiring medical quote for NEET-PG aspirants. 
+    const prompt = `Generate a unique and famous, inspiring quote for NEET-PG aspirants. 
 Respond ONLY with valid JSON: { "quote": "quote text", "author": "author name" }
 Do not include any additional text or explanations.`;
 
     const quote = await this.fetchFromGroq(prompt);
-    return quote || {
-      quote: "The art of medicine consists of amusing the patient while nature cures the disease.",
-      author: "Voltaire"
-    };
+    
+    if (quote?.quote && quote?.author) {
+      localStorage.setItem(key, JSON.stringify(quote));
+      return quote;
+    }
+
+    // Retry if failed
+    console.warn("Failed to fetch quote, retrying...");
+    return this.getDailyQuote();
   }
 
-  async generateMCQ() {
+  async getDailyMCQ() {
+    const key = `dailyMCQ-${this.currentDateKey}`;
+    const cached = localStorage.getItem(key);
+    if (cached) return JSON.parse(cached);
+
     const prompt = `Generate a unique NEET-PG level MCQ question on a random medical topic.
 Respond ONLY with valid JSON containing:
 {
@@ -116,17 +95,16 @@ Respond ONLY with valid JSON containing:
 - Do not include any additional text`;
 
     const mcq = await this.fetchFromGroq(prompt);
-    return mcq || {
-      question: "Which of the following is a characteristic feature of Parkinson's disease?",
-      options: [
-        "Pill-rolling tremor",
-        "Intention tremor",
-        "Flapping tremor",
-        "Resting tremor"
-      ],
-      correctAnswer: 0,
-      explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease."
-    };
+    
+    if (mcq?.question && Array.isArray(mcq.options) && mcq.options.length === 4 && 
+        typeof mcq.correctAnswer === "number" && mcq.explanation) {
+      localStorage.setItem(key, JSON.stringify(mcq));
+      return mcq;
+    }
+
+    // Retry if failed
+    console.warn("Failed to fetch MCQ, retrying...");
+    return this.getDailyMCQ();
   }
 
   handleOptionClick(optionIndex) {
@@ -148,36 +126,8 @@ Respond ONLY with valid JSON containing:
     const container = document.createElement('div');
     container.className = 'home-page';
 
-    // Get shared content (same for all users)
-    const sharedContent = await this.getSharedDailyContent();
-    if (sharedContent) {
-      this.currentQuote = sharedContent.quote;
-      this.currentMCQ = sharedContent.mcq;
-    } else {
-      // Fallback to local cache if shared content not ready
-      const localQuoteKey = `dailyQuote-${this.currentDateKey}`;
-      const localMCQKey = `dailyMCQ-${this.currentDateKey}`;
-      
-      this.currentQuote = JSON.parse(localStorage.getItem(localQuoteKey) || '{}');
-      this.currentMCQ = JSON.parse(localStorage.getItem(localMCQKey) || '{}');
-    }
-
-    // If still no content, use placeholders
-    if (!this.currentQuote?.quote) {
-      this.currentQuote = {
-        quote: "Loading today's inspiration...",
-        author: "System"
-      };
-    }
-    
-    if (!this.currentMCQ?.question) {
-      this.currentMCQ = {
-        question: "Loading today's question...",
-        options: ["Loading...", "Loading...", "Loading...", "Loading..."],
-        correctAnswer: 0,
-        explanation: "Please refresh the page to load the question."
-      };
-    }
+    this.currentQuote = await this.getDailyQuote();
+    this.currentMCQ = await this.getDailyMCQ();
 
     const quoteSection = document.createElement('div');
     quoteSection.className = 'quote-section';
