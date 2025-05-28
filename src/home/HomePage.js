@@ -1,6 +1,6 @@
 export class HomePage {
   constructor() {
-    this.GROQ_API_KEY = "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"; // Replace with your actual key
+    this.GROQ_API_KEY = "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";
     this.GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
     this.currentQuote = null;
     this.currentMCQ = null;
@@ -18,10 +18,7 @@ export class HomePage {
 
   getTodayDateKey() {
     const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   }
 
   async fetchFromGroq(prompt) {
@@ -36,81 +33,78 @@ export class HomePage {
           model: "llama3-8b-8192",
           messages: [{ role: "user", content: prompt }],
           temperature: 0.7,
-          max_tokens: 1024
+          max_tokens: 1024,
+          response_format: { type: "json_object" }
         })
       });
 
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
       const data = await response.json();
-      const text = data?.choices?.[0]?.message?.content || "";
-      console.log("Raw Groq response:", text);
-
-      // Try parsing JSON directly or extracting from code block
+      const jsonString = data?.choices?.[0]?.message?.content || "";
+      
       try {
-        return JSON.parse(text);
+        return JSON.parse(jsonString);
       } catch {
-        const match = text.match(/```json\s*([\s\S]+?)\s*```/);
-        if (match) {
-          return JSON.parse(match[1]);
-        }
+        // Extract JSON from code block if needed
+        const match = jsonString.match(/\{[\s\S]*\}/);
+        return match ? JSON.parse(match[0]) : null;
       }
     } catch (error) {
-      console.error('Error fetching from Groq:', error);
+      console.error('Groq API Error:', error);
+      return null;
     }
-
-    return null;
   }
 
   async getDailyQuote() {
-    const key = `dailyQuote-${this.getTodayDateKey()}`;
+    const key = `dailyQuote-${this.currentDateKey}`;
     const cached = localStorage.getItem(key);
     if (cached) return JSON.parse(cached);
 
-    const prompt = `Generate an inspiring medical quote for NEET-PG aspirants. 
-Format: Strict JSON with fields 'quote' and 'author'. Only return JSON, nothing else.`;
+    const prompt = `Generate a unique, inspiring medical quote for NEET-PG aspirants. 
+Respond ONLY with valid JSON: { "quote": "quote text", "author": "author name" }
+Do not include any additional text or explanations.`;
 
     const quote = await this.fetchFromGroq(prompt);
+    
     if (quote?.quote && quote?.author) {
       localStorage.setItem(key, JSON.stringify(quote));
       return quote;
     }
 
-    return {
-      quote: "The art of medicine consists of amusing the patient while nature cures the disease.",
-      author: "Voltaire"
-    };
+    // Retry if failed
+    console.warn("Failed to fetch quote, retrying...");
+    return this.getDailyQuote();
   }
 
   async getDailyMCQ() {
-    const key = `dailyMCQ-${this.getTodayDateKey()}`;
+    const key = `dailyMCQ-${this.currentDateKey}`;
     const cached = localStorage.getItem(key);
     if (cached) return JSON.parse(cached);
 
-    const prompt = `Generate a challenging NEET-PG level MCQ question.
-Format: Strict JSON with fields 'question', 'options' (array of 4), 'correctAnswer' (index 0-3), 'explanation'.
-Only return valid JSON, no extra commentary.`;
+    const prompt = `Generate a unique NEET-PG level MCQ question on a random medical topic.
+Respond ONLY with valid JSON containing:
+{
+  "question": "Question text?",
+  "options": ["Option1", "Option2", "Option3", "Option4"],
+  "correctAnswer": 0,
+  "explanation": "Detailed explanation"
+}
+- correctAnswer must be index (0-3)
+- Include 4 options exactly
+- Do not include any additional text`;
 
     const mcq = await this.fetchFromGroq(prompt);
-    if (
-      mcq?.question &&
-      Array.isArray(mcq.options) && mcq.options.length === 4 &&
-      typeof mcq.correctAnswer === "number" &&
-      mcq.explanation
-    ) {
+    
+    if (mcq?.question && Array.isArray(mcq.options) && mcq.options.length === 4 && 
+        typeof mcq.correctAnswer === "number" && mcq.explanation) {
       localStorage.setItem(key, JSON.stringify(mcq));
       return mcq;
     }
 
-    return {
-      question: "Which of the following is a characteristic feature of Parkinson's disease?",
-      options: [
-        "Pill-rolling tremor",
-        "Intention tremor",
-        "Flapping tremor",
-        "Resting tremor"
-      ],
-      correctAnswer: 0,
-      explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease."
-    };
+    // Retry if failed
+    console.warn("Failed to fetch MCQ, retrying...");
+    return this.getDailyMCQ();
   }
 
   handleOptionClick(optionIndex) {
@@ -141,8 +135,8 @@ Only return valid JSON, no extra commentary.`;
       <h2>Quote of the Day</h2>
       <div class="quote-content">
         <i class="fas fa-quote-left"></i>
-        <p class="quote-text">${this.currentQuote?.quote}</p>
-        <p class="quote-author">- ${this.currentQuote?.author}</p>
+        <p class="quote-text">${this.currentQuote.quote}</p>
+        <p class="quote-author">- ${this.currentQuote.author}</p>
       </div>
     `;
 
@@ -150,7 +144,7 @@ Only return valid JSON, no extra commentary.`;
     mcqSection.className = 'mcq-section';
     mcqSection.innerHTML = `
       <h2>MCQ of the Day</h2>
-      <p class="mcq-question">${this.currentMCQ?.question}</p>
+      <p class="mcq-question">${this.currentMCQ.question}</p>
       <div class="mcq-options">
         ${this.currentMCQ.options.map((option, index) => `
           <button class="mcq-option" data-index="${index}">${option}</button>
@@ -158,7 +152,7 @@ Only return valid JSON, no extra commentary.`;
       </div>
       <div class="mcq-explanation" style="display: none;">
         <h3>Explanation:</h3>
-        <p class="explanation-text">${this.currentMCQ?.explanation}</p>
+        <p class="explanation-text">${this.currentMCQ.explanation}</p>
       </div>
     `;
 
