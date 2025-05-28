@@ -1,6 +1,6 @@
 export class HomePage {
   constructor() {
-    this.GROQ_API_KEY = "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";
+    this.GROQ_API_KEY = "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";
     this.GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
     this.currentQuote = null;
     this.currentMCQ = null;
@@ -33,7 +33,7 @@ export class HomePage {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: "mixtral-8x7b-32768",
+          model: "llama3-8b-8192",
           messages: [{ role: "user", content: prompt }],
           temperature: 0.7,
           max_tokens: 1024
@@ -41,6 +41,7 @@ export class HomePage {
       });
 
       const data = await response.json();
+      console.log("Groq API response:", data);
       return data.choices && data.choices.length > 0 ? data.choices[0].message.content : null;
     } catch (error) {
       console.error('Error fetching from Groq:', error);
@@ -55,13 +56,21 @@ export class HomePage {
 
     const prompt = "Generate an inspiring medical quote for NEET-PG aspirants. Format: JSON with 'quote' and 'author' fields. Make it motivational and relevant to medical studies.";
     const response = await this.fetchFromGroq(prompt);
-    const quote = response ? JSON.parse(response) : {
+
+    try {
+      const quote = response ? JSON.parse(response) : null;
+      if (quote?.quote && quote?.author) {
+        localStorage.setItem(key, JSON.stringify(quote));
+        return quote;
+      }
+    } catch (e) {
+      console.error("Error parsing quote JSON:", e);
+    }
+
+    return {
       quote: "The art of medicine consists of amusing the patient while nature cures the disease.",
       author: "Voltaire"
     };
-
-    localStorage.setItem(key, JSON.stringify(quote));
-    return quote;
   }
 
   async getDailyMCQ() {
@@ -71,7 +80,23 @@ export class HomePage {
 
     const prompt = "Generate a challenging NEET-PG level MCQ question. Format: JSON with 'question', 'options' (array of 4), 'correctAnswer' (index 0-3), and 'explanation' fields. Make it high quality and educational.";
     const response = await this.fetchFromGroq(prompt);
-    const mcq = response ? JSON.parse(response) : {
+
+    try {
+      const mcq = response ? JSON.parse(response) : null;
+      if (
+        mcq?.question &&
+        Array.isArray(mcq.options) && mcq.options.length === 4 &&
+        typeof mcq.correctAnswer === "number" &&
+        mcq?.explanation
+      ) {
+        localStorage.setItem(key, JSON.stringify(mcq));
+        return mcq;
+      }
+    } catch (e) {
+      console.error("Error parsing MCQ JSON:", e);
+    }
+
+    return {
       question: "Which of the following is a characteristic feature of Parkinson's disease?",
       options: [
         "Pill-rolling tremor",
@@ -82,9 +107,6 @@ export class HomePage {
       correctAnswer: 0,
       explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease. It's a resting tremor that appears as if the patient is rolling a pill between thumb and index finger."
     };
-
-    localStorage.setItem(key, JSON.stringify(mcq));
-    return mcq;
   }
 
   handleOptionClick(optionIndex) {
