@@ -1,19 +1,19 @@
 export class HomePage {
   constructor() {
-    this.GROQ_API_KEY = "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";
+    this.GROQ_API_KEY = "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"; // Replace with your actual key
     this.GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
     this.currentQuote = null;
     this.currentMCQ = null;
     this.selectedAnswer = null;
     this.currentDateKey = this.getTodayDateKey();
 
-    // Check every minute if date changed
+    // Reload page if date changes
     setInterval(() => {
       const newKey = this.getTodayDateKey();
       if (newKey !== this.currentDateKey) {
         window.location.reload();
       }
-    }, 60000); // Check every minute
+    }, 60000);
   }
 
   getTodayDateKey() {
@@ -41,12 +41,23 @@ export class HomePage {
       });
 
       const data = await response.json();
-      console.log("Groq API response:", data);
-      return data.choices && data.choices.length > 0 ? data.choices[0].message.content : null;
+      const text = data?.choices?.[0]?.message?.content || "";
+      console.log("Raw Groq response:", text);
+
+      // Try parsing JSON directly or extracting from code block
+      try {
+        return JSON.parse(text);
+      } catch {
+        const match = text.match(/```json\s*([\s\S]+?)\s*```/);
+        if (match) {
+          return JSON.parse(match[1]);
+        }
+      }
     } catch (error) {
       console.error('Error fetching from Groq:', error);
-      return null;
     }
+
+    return null;
   }
 
   async getDailyQuote() {
@@ -54,17 +65,13 @@ export class HomePage {
     const cached = localStorage.getItem(key);
     if (cached) return JSON.parse(cached);
 
-    const prompt = "Generate an inspiring medical quote for NEET-PG aspirants. Format: JSON with 'quote' and 'author' fields. Make it motivational and relevant to medical studies.";
-    const response = await this.fetchFromGroq(prompt);
+    const prompt = `Generate an inspiring medical quote for NEET-PG aspirants. 
+Format: Strict JSON with fields 'quote' and 'author'. Only return JSON, nothing else.`;
 
-    try {
-      const quote = response ? JSON.parse(response) : null;
-      if (quote?.quote && quote?.author) {
-        localStorage.setItem(key, JSON.stringify(quote));
-        return quote;
-      }
-    } catch (e) {
-      console.error("Error parsing quote JSON:", e);
+    const quote = await this.fetchFromGroq(prompt);
+    if (quote?.quote && quote?.author) {
+      localStorage.setItem(key, JSON.stringify(quote));
+      return quote;
     }
 
     return {
@@ -78,22 +85,19 @@ export class HomePage {
     const cached = localStorage.getItem(key);
     if (cached) return JSON.parse(cached);
 
-    const prompt = "Generate a challenging NEET-PG level MCQ question. Format: JSON with 'question', 'options' (array of 4), 'correctAnswer' (index 0-3), and 'explanation' fields. Make it high quality and educational.";
-    const response = await this.fetchFromGroq(prompt);
+    const prompt = `Generate a challenging NEET-PG level MCQ question.
+Format: Strict JSON with fields 'question', 'options' (array of 4), 'correctAnswer' (index 0-3), 'explanation'.
+Only return valid JSON, no extra commentary.`;
 
-    try {
-      const mcq = response ? JSON.parse(response) : null;
-      if (
-        mcq?.question &&
-        Array.isArray(mcq.options) && mcq.options.length === 4 &&
-        typeof mcq.correctAnswer === "number" &&
-        mcq?.explanation
-      ) {
-        localStorage.setItem(key, JSON.stringify(mcq));
-        return mcq;
-      }
-    } catch (e) {
-      console.error("Error parsing MCQ JSON:", e);
+    const mcq = await this.fetchFromGroq(prompt);
+    if (
+      mcq?.question &&
+      Array.isArray(mcq.options) && mcq.options.length === 4 &&
+      typeof mcq.correctAnswer === "number" &&
+      mcq.explanation
+    ) {
+      localStorage.setItem(key, JSON.stringify(mcq));
+      return mcq;
     }
 
     return {
@@ -105,7 +109,7 @@ export class HomePage {
         "Resting tremor"
       ],
       correctAnswer: 0,
-      explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease. It's a resting tremor that appears as if the patient is rolling a pill between thumb and index finger."
+      explanation: "Pill-rolling tremor is a characteristic feature of Parkinson's disease."
     };
   }
 
@@ -128,40 +132,36 @@ export class HomePage {
     const container = document.createElement('div');
     container.className = 'home-page';
 
-    // Fetch daily content
     this.currentQuote = await this.getDailyQuote();
     this.currentMCQ = await this.getDailyMCQ();
 
-    // Quote Section
     const quoteSection = document.createElement('div');
     quoteSection.className = 'quote-section';
     quoteSection.innerHTML = `
       <h2>Quote of the Day</h2>
       <div class="quote-content">
         <i class="fas fa-quote-left"></i>
-        <p class="quote-text">${this.currentQuote?.quote || 'No quote available'}</p>
-        <p class="quote-author">- ${this.currentQuote?.author || 'Unknown'}</p>
+        <p class="quote-text">${this.currentQuote?.quote}</p>
+        <p class="quote-author">- ${this.currentQuote?.author}</p>
       </div>
     `;
 
-    // MCQ Section
     const mcqSection = document.createElement('div');
     mcqSection.className = 'mcq-section';
     mcqSection.innerHTML = `
       <h2>MCQ of the Day</h2>
-      <p class="mcq-question">${this.currentMCQ?.question || 'No question available'}</p>
+      <p class="mcq-question">${this.currentMCQ?.question}</p>
       <div class="mcq-options">
-        ${(this.currentMCQ?.options || []).map((option, index) => `
+        ${this.currentMCQ.options.map((option, index) => `
           <button class="mcq-option" data-index="${index}">${option}</button>
         `).join('')}
       </div>
       <div class="mcq-explanation" style="display: none;">
         <h3>Explanation:</h3>
-        <p class="explanation-text">${this.currentMCQ?.explanation || 'No explanation available'}</p>
+        <p class="explanation-text">${this.currentMCQ?.explanation}</p>
       </div>
     `;
 
-    // Add event listeners
     mcqSection.querySelectorAll('.mcq-option').forEach((option, index) => {
       option.addEventListener('click', () => this.handleOptionClick(index));
     });
