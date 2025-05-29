@@ -303,13 +303,13 @@ main {
 }
 
 .video-popup-content {
-  background: #fff;
-  border-radius: 20px;
-  width: 80%;
-  max-width: 600px;
+  background: #000;              /* Make background black for better video contrast */
+  border-radius: 8px;            /* Smaller corners */
+  width: 90%;                    /* Wider container */
+  max-width: 900px;              /* Allow more width */
   position: relative;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;               /* Less internal spacing */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);  /* Keep soft shadow */
   animation: slideUp 0.4s ease-out;
 }
 
