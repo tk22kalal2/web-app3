@@ -303,9 +303,9 @@ main {
 }
 
 .video-popup-content {
-  background: #000;              /* Make background black for better video contrast */
+  background: #fff;              /* Make background black for better video contrast */
   border-radius: 8px;            /* Smaller corners */
-  width: 90%;                    /* Wider container */
+  width: 80%;                    /* Wider container */
   max-width: 900px;              /* Allow more width */
   position: relative;
   padding: 0.5rem;               /* Less internal spacing */
@@ -352,7 +352,6 @@ main {
   overflow: hidden;
   border-radius: 6px;
   box-shadow: none; /* Remove extra shadow */
-  margin: 0;
 }
 
 .iframe-container iframe {
@@ -408,7 +407,7 @@ main {
 
   .video-popup-content {
     width: 95%;
-    padding: 1.5rem;
+    padding: 0;
   }
 
   .video-title {
