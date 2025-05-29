@@ -407,7 +407,7 @@ main {
 
   .video-popup-content {
     width: 95%;
-    padding: 0;
+    padding: 0.5rem;
   }
 
   .video-title {
