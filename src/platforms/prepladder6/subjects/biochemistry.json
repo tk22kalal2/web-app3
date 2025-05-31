@@ -1,0 +1,189 @@
+{
+  "subjectName": "Biochemistry",
+  "lectures": [
+     {
+        "title": "1_.Cell_and_integration_of_Metabolism.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6274/1_.Cell_and_integration_of_Metabolism.mp4?hash=AgADjx"
+    },
+    {
+        "title": "2._Classification_of_Carbohydrates_Simple_Carbohydrates.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6275/1._Classification_of_Carbohydrates_Simple_Carbohydrates.mp4?hash=AgADkB"
+    },
+    {
+        "title": "3._Mucopolysaccharidosis.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6276/2._Mucopolysaccharidosis.mp4?hash=AgADkR"
+    },
+    {
+        "title": "4._Complex_Carbohydrates.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6277/3._Complex_Carbohydrates.mp4?hash=AgADkh"
+    },
+    {
+        "title": "5._Isomerism.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6278/4._Isomerism.mp4?hash=AgADlR"
+    },
+    {
+        "title": "6._Urine_Investigations_Clinical_Diagnosis.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6279/5._Urine_Investigations_Clinical_Diagnosis.mp4?hash=AgADmB"
+    },
+    {
+        "title": "7._Glut_Transporters.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6280/1._Glut_Transporters.mp4?hash=AgADnx"
+    },
+    {
+        "title": "8._Glycolysis.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6281/2._Glycolysis.mp4?hash=AgADoR"
+    },
+    {
+        "title": "9._Citric_Acid_Cycle.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6282/3._Citric_Acid_Cycle.mp4?hash=AgADoh"
+    },
+    {
+        "title": "10._Glycogen_Metabolism.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6283/4._Glycogen_Metabolism.mp4?hash=AgADox"
+    },
+    {
+        "title": "11._gluconeogenesis.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6284/5._gluconeogenesis.mp4?hash=AgADpB"
+    },
+    {
+        "title": "12._glycogen-storage-disorders.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6285/6._glycogen-storage-disorders.mp4?hash=AgADpR"
+    },
+    {
+        "title": "13._Fructose and Galactose Metabolism.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6286/3.7+Fructose+++Galactose+Metabolism.mp4?hash=AgADhA"
+    },
+    {
+        "title": "14._hmp-shunt.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6287/8._hmp-shunt.mp4?hash=AgADqR"
+    },
+    {
+        "title": "15._fates-of-pyruvate-pdh-complex.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6288/9._fates-of-pyruvate-pdh-complex.mp4?hash=AgAD6h"
+    },
+    {
+        "title": "16._Electron_Transport_Chain.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6289/1._Electron_Transport_Chain.mp4?hash=AgADAh"
+    },
+    {
+        "title": "17._Classification of Lipids atf.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6290/1._Lipid_Chemistry_and_Complex_Lipids.mp4?hash=AgADBx"
+    },
+    {
+        "title": "18._Fatty_Acid_Cholesterol_and_Glycolipids.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6291/2._Fatty_Acid_Cholesterol_and_Glycolipids.mp4?hash=AgADDB"
+    },
+    {
+        "title": "19._Fatty_Acid_Synthesis.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6292/1._Fatty_Acid_Synthesis.mp4?hash=AgADDh"
+    },
+    {
+        "title": "20._Fatty_Acid_Oxidation.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6293/2._Fatty_Acid_Oxidation.mp4?hash=AgADbx"
+    },
+    {
+        "title": "21._Cholesterol_and_Bile_Acid_Synthesis.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6294/3._Cholesterol_and_Bile_Acid_Synthesis.mp4?hash=AgADsh"
+    },
+    {
+        "title": "22._lipoprotein-metabolism.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6295/4._lipoprotein-metabolism.mp4?hash=AgADuR"
+    },
+    {
+        "title": "23._Hyperlipoproteinemia_%26_Fatty_Liver.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6296/5._Hyperlipoproteinemia_%2526_Fatty_Liver.mp4?hash=AgADvB"
+    },
+    {
+        "title": "24._Amino_Acid_Protein_Chemistry.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6297/1.Amino_Acid_Protein_Chemistry.mp4?hash=AgAD3R"
+    },
+    {
+        "title": "25._Hemoglobin_and_Myoglobin.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6298/2._Hemoglobin_and_Myoglobin.mp4?hash=AgADiB"
+    },
+    {
+        "title": "26._EPP_Chromatography.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6299/3._EPP_Chromatography.mp4?hash=AgADiR"
+    },
+    {
+        "title": "27._Amino-Acid_Catabolism_Urea-Cycle_and_Hyperammonemia.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6300/1._Amino-Acid_Catabolism_Urea-Cycle_and_Hyperammonemia.mp4?hash=AgADlR"
+    },
+    {
+        "title": "28._Glycine_and_one_Carbon_Pool.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6301/2._Glycine_and_one_Carbon_Pool.mp4?hash=AgADlx"
+    },
+    {
+        "title": "29._Phenylalanine_and_Tyrosine_Metabolism.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6302/3._Phenylalanine_and_Tyrosine_Metabolism.mp4?hash=AgADoR"
+    },
+    {
+        "title": "30._Amino_Acid_Metabolism_Disorders.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6303/4._Amino_Acid_Metabolism_Disorders.mp4?hash=AgADIR"
+    },
+    {
+        "title": "31.nucleotides-dna-chromosomes.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6304/1.nucleotides-dna-chromosomes.mp4?hash=AgADIh"
+    },
+    {
+        "title": "32.mitochondrial-dna-and-replication.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6305/2.mitochondrial-dna-and-replication+%281%29.mp4?hash=AgADIx"
+    },
+    {
+        "title": "33. Errors of Replication.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6306/3.DNA_Repair_Mechanism.mp4?hash=AgADIB"
+    },
+    {
+        "title": "34.rna-transcription-post-transcriptional-modifications.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6307/4.rna-transcription-post-transcriptional-modifications.mp4?hash=AgADJx"
+    },
+    {
+        "title": "35.properties-of-genetic-code-mutation.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6308/5.properties-of-genetic-code-mutation.mp4?hash=AgADJR"
+    },
+    {
+        "title": "36.inhibitors-of-translation.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6309/6.inhibitors-of-translation.mp4?hash=AgADJh"
+    },
+    {
+        "title": "37.PCR.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6310/7.PCR.mp4?hash=AgADQR"
+    },
+    {
+        "title": "38.recombinant-dna-technology.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6311/8.recombinant-dna-technology.mp4?hash=AgADQh"
+    },
+    {
+        "title": "39.microarray-crispr-lac-operon.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6312/9._microarray-crispr-lac-operon.mp4?hash=AgADRB"
+    },
+    {
+        "title": "40.chromosomes-cell-cycle.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6313/10.chromosomes-cell-cycle.mp4?hash=AgADRx"
+    },
+    {
+        "title": "41.enzymes.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6314/1.enzymes.mp4?hash=AgADSR"
+    },
+    {
+        "title": "44.fat-soluble-vitamins_Vit - D .mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6315/2._fat-soluble-vitamins_Part_2.mp4?hash=AgADTh"
+    },
+    {
+        "title": "42.Heme-synthesis-and-porphyrias.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6316/1._heme-synthesis-and-porphyrias.mp4?hash=AgADSB"
+    },
+    {
+        "title": "43. Fat-soluble-vitamins A, E and K.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6317/1._fat-soluble-vitamins_part1.mp4?hash=AgADSh"
+    },
+    {
+        "title": "45. water-soluble-vitamins.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6318/3._water-soluble-vitamins.mp4?hash=AgAD30"
+    },
+    {
+        "title": "46. Alcohol-metabolism.mp4",
+        "streamingUrl": "https://stream4.nextpulse.workers.dev/watch/6319/4._alcohol-metabolism.mp4?hash=AgADTx"
+    }
+  ]
+}
