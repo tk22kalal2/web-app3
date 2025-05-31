@@ -1,0 +1,437 @@
+{
+  "subjectName": "Surgery",
+  "lectures": [
+      {
+        "title": "1. About the faculty",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5320/1.+About+the+faculty.mp4?hash=AgADTA"
+    },
+    {
+        "title": "2. How to use theapp",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5321/2.+How+to+use+theapp.mp4?hash=AgADTQ"
+    },
+    {
+        "title": "3. Which books to study",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5322/3.+Which+books+to+study.mp4?hash=AgADTg"
+    },
+    {
+        "title": "1. High Yield Topics",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5323/1.+High+Yield+Topics.mp4?hash=AgADTw"
+    },
+    {
+        "title": "1. Breast Part 1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5324/1.+Breast+Part+1.mp4?hash=AgADUA"
+    },
+    {
+        "title": "2. Breast Part 2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5325/2.++Breast+Part+2.mp4?hash=AgADUQ"
+    },
+    {
+        "title": "3. Thyroid Part 1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5326/3.+Thyroid+Part+1.mp4?hash=AgADUg"
+    },
+    {
+        "title": "4. Thyroid Part 2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5327/4.+Thyroid+Part+2.mp4?hash=AgADVA"
+    },
+    {
+        "title": "5. Parathyroid Adrenal Gland",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5328/5.+Parathyroid+Adrenal+Gland.mp4?hash=AgADWA"
+    },
+    {
+        "title": "1. Liver Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5329/1.+Liver+Part-1.mp4?hash=AgADWQ"
+    },
+    {
+        "title": "2. Liver Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5330/2.+Liver+Part-2.mp4?hash=AgADWg"
+    },
+    {
+        "title": "3. Portal Hypertention",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5331/3.+Portal+Hypertention.mp4?hash=AgADWw"
+    },
+    {
+        "title": "4. Gallbladder",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5332/4.+Gallbladder.mp4?hash=AgADXA"
+    },
+    {
+        "title": "5. Bile Dusct Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5333/5.+Bile+Dusct+Part-1.mp4?hash=AgADXQ"
+    },
+    {
+        "title": "6. Bile Dusct Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5334/6.+Bile+Dusct+Part-2.mp4?hash=AgADXg"
+    },
+    {
+        "title": "7. Pancreas",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5335/7.+Pancreas.mp4?hash=AgADXw"
+    },
+    {
+        "title": "1. Esophagus",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5336/1.+Esophagus.mp4?hash=AgADYA"
+    },
+    {
+        "title": "2. Stomach and Duodenum",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5337/2.+Stomach+and+Duodenum.mp4?hash=AgADYQ"
+    },
+    {
+        "title": "3. Peritoneum",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5338/3.+Peritoneum.mp4?hash=AgADYw"
+    },
+    {
+        "title": "4. Intestinal Obtruction",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5339/4.+Intestinal+Obtruction.mp4?hash=AgADZQ"
+    },
+    {
+        "title": "5. Small Intestine",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5340/5.+Small+Intestine.mp4?hash=AgADZg"
+    },
+    {
+        "title": "6. Large Intestine",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5341/6.+Large+Intestine.mp4?hash=AgADaA"
+    },
+    {
+        "title": "7. Ileostomy and Colostomy",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5342/7.+Ileostomy+and+Colostomy.mp4?hash=AgADaQ"
+    },
+    {
+        "title": "8. Inflammatory Blow Disease Part1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5343/8.+Inflammatory+Blow+Disease+Part1.mp4?hash=AgADag"
+    },
+    {
+        "title": "9. Inflammatory Blow Disease Part2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5344/9.+Inflammatory+Blow+Disease+Part2.mp4?hash=AgADaw"
+    },
+    {
+        "title": "10. Vermiform Appendix1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5345/10.+Vermiform+Appendix1.mp4?hash=AgADbA"
+    },
+    {
+        "title": "11 .Rectum And Anal Canal",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5346/11+.Rectum+And+Anal+Canal.mp4?hash=AgADbQ"
+    },
+    {
+        "title": "12. Hernia and Abdominal Wall 1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5347/12.+Hernia+and+Abdominal+Wall+1.mp4?hash=AgADbg"
+    },
+    {
+        "title": "12. Hernia and Abdominal Wall 2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5348/12.+Hernia+and+Abdominal+Wall+2.mp4?hash=AgADbw"
+    },
+    {
+        "title": "13. Spleen",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5349/13.+Spleen.mp4?hash=AgADcA"
+    },
+    {
+        "title": "1. Kidney and Ureter Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5350/1.+Kidney+and+Ureter+Part-1.mp4?hash=AgADcQ"
+    },
+    {
+        "title": "2. Kidney and Ureter Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5351/2.+Kidney+and+Ureter+Part-2.mp4?hash=AgADcg"
+    },
+    {
+        "title": "3. Kidney Ureter Part-3",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5352/3.+Kidney+Ureter+Part-3.mp4?hash=AgADcw"
+    },
+    {
+        "title": "4. Urinary Bladder",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5353/4.+Urinary+Bladder.mp4?hash=AgADdA"
+    },
+    {
+        "title": "5. Prostate and Seminal Vesicles",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5354/5.+Prostate+and+Seminal+Vesicles.mp4?hash=AgADdQ"
+    },
+    {
+        "title": "6. Urethra and Penis",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5355/6.+Urethra+and+Penis.mp4?hash=AgADeQ"
+    },
+    {
+        "title": "7. Testis Secrotum Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5356/7.+Testis+Secrotum+Part-1.mp4?hash=AgADeg"
+    },
+    {
+        "title": "8. Testis Secrotum Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5357/8.+Testis+Secrotum+Part-2.mp4?hash=AgADew"
+    },
+    {
+        "title": "1. Arterial Discorders Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5358/1.+Arterial+Discorders+Part-1.mp4?hash=AgADfA"
+    },
+    {
+        "title": "2. Arteria Disorders Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5359/2.+Arteria+Disorders+Part-2.mp4?hash=AgADfQ"
+    },
+    {
+        "title": "3. Venous Disorders",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5360/3.+Venous+Disorders.mp4?hash=AgADfg"
+    },
+    {
+        "title": "4. Lymphatic System",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5361/4.+Lymphatic+System.mp4?hash=AgADfw"
+    },
+    {
+        "title": "5. Thorax and Mediastinum Part 1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5362/5.+Thorax+and+Mediastinum+Part+1.mp4?hash=AgADgA"
+    },
+    {
+        "title": "6. Thorax and Mediastinum Part 2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5363/6.+Thorax+and+Mediastinum+Part+2.mp4?hash=AgADgQ"
+    },
+    {
+        "title": "1. Burns",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5364/1.+Burns.mp4?hash=AgADgg"
+    },
+    {
+        "title": "2. Plastic Surgery and Skin Lesions",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5365/2.+Plastic+Surgery+and+Skin+Lesions.mp4?hash=AgADgw"
+    },
+    {
+        "title": "3. Wound Healding Tissue Reapair and Scar",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5366/3.+Wound+Healding+Tissue+Reapair+and+Scar.mp4?hash=AgADhA"
+    },
+    {
+        "title": "1. Cerebrovasular Diseases",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5367/1.+Cerebrovasular+Diseases.mp4?hash=AgADhQ"
+    },
+    {
+        "title": "2. CNS Tumors",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5368/2.+CNS+Tumors.mp4?hash=AgADhg"
+    },
+    {
+        "title": "1. Oral Cavity",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5369/1.+Oral+Cavity.mp4?hash=AgADhw"
+    },
+    {
+        "title": "2. Salivary Glands",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5370/2.+Salivary+Glands.mp4?hash=AgADiA"
+    },
+    {
+        "title": "3. Neck",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5371/3.+Neck.mp4?hash=AgADiQ"
+    },
+    {
+        "title": "4. Facial Injuries and Abnormalities",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5372/4.+Facial+Injuries+and+Abnormalities.mp4?hash=AgADig"
+    },
+    {
+        "title": "1. Oncology",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5373/1.+Oncology.mp4?hash=AgADiw"
+    },
+    {
+        "title": "1. Trauma ATLS Protocol",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5374/1.+Trauma+ATLS+Protocol.mp4?hash=AgADjA"
+    },
+    {
+        "title": "2. Pediatric Surgery Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5375/2.+Pediatric+Surgery+Part-1+.mp4?hash=AgADjQ"
+    },
+    {
+        "title": "3. Nutritionn",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5376/3.+Nutritionn.mp4?hash=AgADjg"
+    },
+    {
+        "title": "4. Peadiatric Surgery Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5377/4.+Peadiatric+Surgery+Part-2.mp4?hash=AgADjw"
+    },
+    {
+        "title": "5. Head Injury",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5378/5.+Head+Injury.mp4?hash=AgADkA"
+    },
+    {
+        "title": "6. Neck and Thoracic Injuries",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5379/6.+Neck+and+Thoracic+Injuries.mp4?hash=AgADkQ"
+    },
+    {
+        "title": "7. Abdominal Trauma",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5380/7.+Abdominal+Trauma.mp4?hash=AgADlQ"
+    },
+    {
+        "title": "8. Trasplantation Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5381/8.+Trasplantation+Part-1.mp4?hash=AgADlw"
+    },
+    {
+        "title": "10. Robotics, Laparoscopy and Bariatic Surgery",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5382/10.+Robotics%2C+Laparoscopy+and+Bariatic+Surgery.mp4?hash=AgADmA"
+    },
+    {
+        "title": "11. Sutures and Anastomoses",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5383/11.+Sutures+and+Anastomoses.mp4?hash=AgADmw"
+    },
+    {
+        "title": "12. Shock",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5384/12.+Shock.mp4?hash=AgADnA"
+    },
+    {
+        "title": "13. General Surgery",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5385/13.+General+Surgery.mp4?hash=AgADnQ"
+    },
+    {
+        "title": "14. Tubes, Catheters and Drains",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5386/14.+Tubes%2C+Catheters+and+Drains.mp4?hash=AgADng"
+    },
+    {
+        "title": "15. Instruments Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5387/15.+Instruments+Part-1.mp4?hash=AgADnw"
+    },
+    {
+        "title": "16. Instruments Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5388/16.+Instruments+Part-2.mp4?hash=AgADoQ"
+    },
+    {
+        "title": "9. Trasplantation Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5389/9.+Trasplantation+Part-2.mp4?hash=AgADog"
+    },
+    {
+        "title": "1. Clinical Examination of Fistulan in Ano",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5390/1.+Clinical+Examination+of+Fistulan+in+Ano.mp4?hash=AgADow"
+    },
+    {
+        "title": "2. Modifield Radical Mastectomy",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5391/2.+Modifield+Radical+Mastectomy.mp4?hash=AgADpA"
+    },
+    {
+        "title": "1. Basics of Radiology Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5392/1.+Basics+of+Radiology+Part-1.mp4?hash=AgADpQ"
+    },
+    {
+        "title": "2. Basics of Radiology Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5393/2.+Basics+of+Radiology+Part-2.mp4?hash=AgADpg"
+    },
+    {
+        "title": "3. Basics of MRi",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5394/3.+Basics+of+MRi.mp4?hash=AgADpw"
+    },
+    {
+        "title": "4. Intervetional Radiology",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5395/4.+Intervetional+Radiology.mp4?hash=AgADqA"
+    },
+    {
+        "title": "5. Radiation Units, Protectionn, Dose Limits and Hazards",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5396/5.+Radiation+Units%2C+Protectionn%2C+Dose+Limits+and+Hazards.mp4?hash=AgADqQ"
+    },
+    {
+        "title": "6. Contrast Media",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5397/6.+Contrast+Media.mp4?hash=AgADqg"
+    },
+    {
+        "title": "1. Respiratory Radiology",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5398/1.+Respiratory+Radiology.mp4?hash=AgADrA"
+    },
+    {
+        "title": "2. CVS Radiology",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5399/2.+CVS+Radiology.mp4?hash=AgADrQ"
+    },
+    {
+        "title": "1. Neuroradiology Part-1",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5400/1.+Neuroradiology+Part-1.mp4?hash=AgADrg"
+    },
+    {
+        "title": "2. Neuroradiology Part-2",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5401/2.+Neuroradiology+Part-2.mp4?hash=AgADrw"
+    },
+    {
+        "title": "3. Head and Neck Radiology",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5402/3.+Head+and+Neck+Radiology.mp4?hash=AgADsA"
+    },
+    {
+        "title": "1. GIT",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5403/1.+GIT.mp4?hash=AgADsQ"
+    },
+    {
+        "title": "1. Hepatobiliary and Pancreatic Radiology",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5404/1.+Hepatobiliary+and+Pancreatic+Radiology.mp4?hash=AgADsg"
+    },
+    {
+        "title": "1. Genitourinary Radiology",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5405/1.+Genitourinary+Radiology.mp4?hash=AgADtQ"
+    },
+    {
+        "title": "1. OBGy Imaging",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5406/1.+OBGy+Imaging.mp4?hash=AgADtg"
+    },
+    {
+        "title": "2. Breast Imaging",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5407/2.+Breast+Imaging.mp4?hash=AgADtw"
+    },
+    {
+        "title": "1. MSK",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5408/1.+MSK.mp4?hash=AgADuA"
+    },
+    {
+        "title": "1. nuclear Medicine",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5409/1.+nuclear+Medicine.mp4?hash=AgADuQ"
+    },
+    {
+        "title": "1. Radiotherapy",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5410/1.+Radiotherapy.mp4?hash=AgADug"
+    },
+    {
+        "title": "1. Introduction to Anesthesia",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5411/1.+Introduction+to+Anesthesia.mp4?hash=AgADuw"
+    },
+    {
+        "title": "2. History and Stages of Anesthesia",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5412/2.History+and+Stages+of+Anesthesia.mp4?hash=AgADvA"
+    },
+    {
+        "title": "1. Preanesthetic Evalution",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5413/1.+Preanesthetic+Evalution.mp4?hash=AgADvQ"
+    },
+    {
+        "title": "1. Oxygen Therapy and Airway",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5414/1.+Oxygen+Therapy+and+Airway.mp4?hash=AgADvg"
+    },
+    {
+        "title": "2. Airway Devices",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5415/2.+Airway+Devices.mp4?hash=AgADvw"
+    },
+    {
+        "title": "1. Anesthesia Machine",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5416/1.+Anesthesia+Machine.mp4?hash=AgADwA"
+    },
+    {
+        "title": "1. Anesthesia Circuit",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5417/1.+Anesthesia+Circuit.mp4?hash=AgADwQ"
+    },
+    {
+        "title": "1. Monitoring in Anaesthesia",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5418/1.+Monitoring+in+Anaesthesia.mp4?hash=AgADwg"
+    },
+    {
+        "title": "1. Modes of Ventilation",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5419/1.+Modes+of+Ventilation.mp4?hash=AgADxA"
+    },
+    {
+        "title": "1. Inhalational Anesthetic Agents",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5420/1.+Inhalational+Anesthetic+Agents.mp4?hash=AgADxw"
+    },
+    {
+        "title": "1. Intravenous Anesthetic Agents",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5421/1.+Intravenous+Anesthetic+Agents.mp4?hash=AgADyA"
+    },
+    {
+        "title": "1. Neuromuscular Blocker",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5422/1.+Neuromuscular+Blocker.mp4?hash=AgADyQ"
+    },
+    {
+        "title": "1. Regional Anesthesia",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5423/1.+Regional+Anesthesia.mp4?hash=AgADyg"
+    },
+    {
+        "title": "1. Fluid Therapy",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5424/1.+Fluid+Therapy.mp4?hash=AgADzA"
+    },
+    {
+        "title": "1. Discharge Scoring System",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5425/1.+Discharge+Scoring+System.mp4?hash=AgADzQ"
+    },
+    {
+        "title": "1. BLS and ACLS Protocol",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5426/1.+BLS+and+ACLS+Protocol.mp4?hash=AgAD0A"
+    },
+    {
+        "title": "1. Brain Death",
+        "streamingUrl": "https://stream3.nextpulse.workers.dev/watch/5427/1.+Brain+Death.mp4?hash=AgAD0g"
+    }
+  ]
+}
