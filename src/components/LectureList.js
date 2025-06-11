@@ -54,10 +54,10 @@ export class LectureList {
       const title = card.querySelector('h3').textContent;
       if (title === lectureTitle) {
         const checkbox = card.querySelector('.completion-checkbox');
-        const isCompleted = this.isLectureCompleted(this.currentPlatform, this.currentSubject, lectureTitle);
+        const isCompleted = this.isLectureCompleted(this.currentPlatform, this.currentSubject, lectureTitle);        
         
         checkbox.classList.toggle('completed', isCompleted);
-        checkbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
+        checkbox.innerHTML = isCompleted ? '<i class="fas fa-circle-check"></i>' : '<i class="far fa-circle"></i>';
         
         // Update card appearance
         card.classList.toggle('completed-lecture', isCompleted);
@@ -144,7 +144,8 @@ export class LectureList {
       
       const completionCheckbox = document.createElement('button');
       completionCheckbox.className = 'completion-checkbox';
-      completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
+      completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-circle-check"></i>' : '<i class="far fa-circle"></i>';
+
       if (isCompleted) {
         completionCheckbox.classList.add('completed');
       }
@@ -159,12 +160,12 @@ export class LectureList {
       
       const streamButton = document.createElement('button');
       streamButton.className = 'stream-button';
-      streamButton.innerHTML = '<i class="fas fa-play"></i> Stream';
+      streamButton.innerHTML = '<i class="fas fa-play"></i> S';
       streamButton.onclick = () => this.openStreamingPopup(lecture.streamingUrl, lecture.title);
       
       const downloadButton = document.createElement('button');
       downloadButton.className = 'download-button';
-      downloadButton.innerHTML = '<i class="fas fa-download"></i> Download';
+      downloadButton.innerHTML = '<i class="fas fa-download"></i> D';
       downloadButton.onclick = () => this.openDownloadPage(lecture.streamingUrl);
       
       buttonContainer.appendChild(streamButton);
