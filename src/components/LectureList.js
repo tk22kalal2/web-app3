@@ -160,12 +160,12 @@ export class LectureList {
       
       const streamButton = document.createElement('button');
       streamButton.className = 'stream-button';
-      streamButton.innerHTML = '<i class="fas fa-play"></i> S';
+      streamButton.innerHTML = '<i class="fas fa-play"></i> ';
       streamButton.onclick = () => this.openStreamingPopup(lecture.streamingUrl, lecture.title);
       
       const downloadButton = document.createElement('button');
       downloadButton.className = 'download-button';
-      downloadButton.innerHTML = '<i class="fas fa-download"></i> D';
+      downloadButton.innerHTML = '<i class="fas fa-download"></i> ';
       downloadButton.onclick = () => this.openDownloadPage(lecture.streamingUrl);
       
       buttonContainer.appendChild(streamButton);
