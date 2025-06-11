@@ -1,9 +1,14 @@
 export class LectureList {
   constructor() {
     this.currentLectures = [];
+    this.currentPlatform = null;
+    this.currentSubject = null;
   }
 
   async loadLectures(platform, subject) {
+    this.currentPlatform = platform;
+    this.currentSubject = subject;
+    
     try {
       // Get the base URL for GitHub Pages
       const baseUrl = window.location.hostname === 'tk22kalal2.github.io' 
@@ -18,6 +23,46 @@ export class LectureList {
       console.error(`Error loading lectures:`, error);
       return [];
     }
+  }
+
+  getCompletionKey(platform, subject, lectureTitle) {
+    return `lecture_completed_${platform}_${subject}_${lectureTitle}`;
+  }
+
+  isLectureCompleted(platform, subject, lectureTitle) {
+    const key = this.getCompletionKey(platform, subject, lectureTitle);
+    return localStorage.getItem(key) === 'true';
+  }
+
+  toggleLectureCompletion(platform, subject, lectureTitle) {
+    const key = this.getCompletionKey(platform, subject, lectureTitle);
+    const isCompleted = this.isLectureCompleted(platform, subject, lectureTitle);
+    
+    if (isCompleted) {
+      localStorage.removeItem(key);
+    } else {
+      localStorage.setItem(key, 'true');
+    }
+    
+    // Update the UI
+    this.updateCompletionUI(lectureTitle);
+  }
+
+  updateCompletionUI(lectureTitle) {
+    const lectureCards = document.querySelectorAll('.lecture-card');
+    lectureCards.forEach(card => {
+      const title = card.querySelector('h3').textContent;
+      if (title === lectureTitle) {
+        const checkbox = card.querySelector('.completion-checkbox');
+        const isCompleted = this.isLectureCompleted(this.currentPlatform, this.currentSubject, lectureTitle);
+        
+        checkbox.classList.toggle('completed', isCompleted);
+        checkbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
+        
+        // Update card appearance
+        card.classList.toggle('completed-lecture', isCompleted);
+      }
+    });
   }
 
   openStreamingPopup(streamingUrl, title) {
@@ -84,8 +129,16 @@ export class LectureList {
       const lectureCard = document.createElement('div');
       lectureCard.className = 'lecture-card';
       
+      const isCompleted = this.isLectureCompleted(this.currentPlatform, this.currentSubject, lecture.title);
+      if (isCompleted) {
+        lectureCard.classList.add('completed-lecture');
+      }
+      
       const title = document.createElement('h3');
       title.textContent = lecture.title;
+      
+      const rightSection = document.createElement('div');
+      rightSection.className = 'lecture-right-section';
       
       const buttonContainer = document.createElement('div');
       buttonContainer.className = 'button-container';
@@ -100,11 +153,22 @@ export class LectureList {
       downloadButton.innerHTML = '<i class="fas fa-download"></i> Download';
       downloadButton.onclick = () => this.openDownloadPage(lecture.streamingUrl);
       
+      const completionCheckbox = document.createElement('button');
+      completionCheckbox.className = 'completion-checkbox';
+      completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
+      if (isCompleted) {
+        completionCheckbox.classList.add('completed');
+      }
+      completionCheckbox.onclick = () => this.toggleLectureCompletion(this.currentPlatform, this.currentSubject, lecture.title);
+      
       buttonContainer.appendChild(streamButton);
       buttonContainer.appendChild(downloadButton);
       
+      rightSection.appendChild(buttonContainer);
+      rightSection.appendChild(completionCheckbox);
+      
       lectureCard.appendChild(title);
-      lectureCard.appendChild(buttonContainer);
+      lectureCard.appendChild(rightSection);
       container.appendChild(lectureCard);
     });
 
