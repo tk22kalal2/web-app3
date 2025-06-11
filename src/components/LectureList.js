@@ -117,14 +117,14 @@ export class LectureList {
   render() {
     const container = document.createElement('div');
     container.className = 'lecture-list';
-  
+
     if (!this.currentLectures || this.currentLectures.length === 0) {
       const message = document.createElement('p');
       message.textContent = 'No lectures available';
       container.appendChild(message);
       return container;
     }
-  
+
     this.currentLectures.forEach(lecture => {
       const lectureCard = document.createElement('div');
       lectureCard.className = 'lecture-card';
@@ -137,30 +137,9 @@ export class LectureList {
       const leftSection = document.createElement('div');
       leftSection.className = 'lecture-left-section';
       
-      // New row for title and checkbox
-      const titleRow = document.createElement('div');
-      titleRow.className = 'lecture-title-row';
-      titleRow.style.display = 'flex';
-      titleRow.style.alignItems = 'center';
-      titleRow.style.justifyContent = 'space-between';
-      
       const title = document.createElement('h3');
       title.textContent = lecture.title;
-      title.style.margin = 0;
       
-      const completionCheckbox = document.createElement('button');
-      completionCheckbox.className = 'completion-checkbox';
-      completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
-      if (isCompleted) {
-        completionCheckbox.classList.add('completed');
-      }
-      completionCheckbox.onclick = () => this.toggleLectureCompletion(this.currentPlatform, this.currentSubject, lecture.title);
-      completionCheckbox.style.marginLeft = '10px';
-  
-      // Add title and checkbox to the row
-      titleRow.appendChild(title);
-      titleRow.appendChild(completionCheckbox);
-  
       const buttonContainer = document.createElement('div');
       buttonContainer.className = 'button-container';
       
@@ -176,15 +155,23 @@ export class LectureList {
       
       buttonContainer.appendChild(streamButton);
       buttonContainer.appendChild(downloadButton);
-  
-      // Append the new title row and buttons
-      leftSection.appendChild(titleRow);
+      
+      leftSection.appendChild(title);
       leftSection.appendChild(buttonContainer);
-  
-      // Only append leftSection (no longer need to append completionCheckbox separately)
+      
+      const completionCheckbox = document.createElement('button');
+      completionCheckbox.className = 'completion-checkbox';
+      completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
+      if (isCompleted) {
+        completionCheckbox.classList.add('completed');
+      }
+      completionCheckbox.onclick = () => this.toggleLectureCompletion(this.currentPlatform, this.currentSubject, lecture.title);
+      
       lectureCard.appendChild(leftSection);
+      lectureCard.appendChild(completionCheckbox);
       container.appendChild(lectureCard);
     });
-  
+
     return container;
   }
+}
