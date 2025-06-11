@@ -1,6 +1,6 @@
 export class HomePage {
   constructor() {
-    this.GROQ_API_KEY = "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";
+    this.GROQ_API_KEY = "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";
     this.GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
     this.currentQuote = null;
     this.currentMCQ = null;
