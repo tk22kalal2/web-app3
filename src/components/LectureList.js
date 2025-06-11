@@ -134,12 +134,26 @@ export class LectureList {
         lectureCard.classList.add('completed-lecture');
       }
       
-      const leftSection = document.createElement('div');
-      leftSection.className = 'lecture-left-section';
+      // Title section with checkbox right next to it
+      const titleSection = document.createElement('div');
+      titleSection.style.cssText = 'display: flex !important; align-items: center !important; gap: 8px !important; margin-bottom: 12px !important;';
       
       const title = document.createElement('h3');
       title.textContent = lecture.title;
+      title.style.cssText = 'margin: 0 !important; flex: 1 !important;';
       
+      const completionCheckbox = document.createElement('button');
+      completionCheckbox.className = 'completion-checkbox';
+      completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
+      if (isCompleted) {
+        completionCheckbox.classList.add('completed');
+      }
+      completionCheckbox.onclick = () => this.toggleLectureCompletion(this.currentPlatform, this.currentSubject, lecture.title);
+      
+      titleSection.appendChild(title);
+      titleSection.appendChild(completionCheckbox);
+      
+      // Button container
       const buttonContainer = document.createElement('div');
       buttonContainer.className = 'button-container';
       
@@ -156,19 +170,8 @@ export class LectureList {
       buttonContainer.appendChild(streamButton);
       buttonContainer.appendChild(downloadButton);
       
-      leftSection.appendChild(title);
-      leftSection.appendChild(buttonContainer);
-      
-      const completionCheckbox = document.createElement('button');
-      completionCheckbox.className = 'completion-checkbox';
-      completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
-      if (isCompleted) {
-        completionCheckbox.classList.add('completed');
-      }
-      completionCheckbox.onclick = () => this.toggleLectureCompletion(this.currentPlatform, this.currentSubject, lecture.title);
-      
-      lectureCard.appendChild(leftSection);
-      lectureCard.appendChild(completionCheckbox);
+      lectureCard.appendChild(titleSection);
+      lectureCard.appendChild(buttonContainer);
       container.appendChild(lectureCard);
     });
 
