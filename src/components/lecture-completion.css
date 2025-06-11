@@ -9,8 +9,8 @@
   background: #f7fafc;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
-  width: 45px;
-  height: 45px;
+  width: 28px;
+  height: 28px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -73,8 +73,8 @@
   
   .completion-checkbox {
     align-self: center;
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     font-size: 1rem;
   }
 }
