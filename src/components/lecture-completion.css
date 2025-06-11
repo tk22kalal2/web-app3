@@ -1,0 +1,80 @@
+/* Lecture Completion Checkbox Styles */
+.lecture-right-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.completion-checkbox {
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #a0aec0;
+  flex-shrink: 0;
+}
+
+.completion-checkbox:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+  transform: scale(1.05);
+}
+
+.completion-checkbox.completed {
+  background: #c6f6d5;
+  border-color: #48bb78;
+  color: #276749;
+}
+
+.completion-checkbox.completed:hover {
+  background: #9ae6b4;
+  border-color: #38a169;
+}
+
+.completion-checkbox i {
+  transition: all 0.2s ease;
+}
+
+.completed-lecture {
+  background: linear-gradient(135deg, #f0fff4 0%, #f7fafc 100%);
+  border-left: 4px solid #48bb78;
+  box-shadow: 0 2px 4px rgba(72, 187, 120, 0.1);
+}
+
+.completed-lecture h3 {
+  color: #2f855a;
+}
+
+.completed-lecture:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(72, 187, 120, 0.2);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .lecture-right-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+  }
+  
+  .button-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .completion-checkbox {
+    align-self: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
