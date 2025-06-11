@@ -1,0 +1,17 @@
+{
+  "subjectName": "Physiology",
+  "lectures": [
+    {
+        "title": "21. Common childhood infections",
+        "streamingUrl": "https://stream5.nextpulse.workers.dev/watch/3785/21.Common+childhood+infections.mp4?hash=AgAD1A"
+    },
+    {
+        "title": "Glands- Parotid Gland.mp4",
+        "streamingUrl": "https://stream5.nextpulse.workers.dev/watch/3786/Glands-+Parotid+Gland.mp4?hash=AgADFR"
+    },
+    {
+        "title": "15 thyroid part 1.mp4",
+        "streamingUrl": "https://stream5.nextpulse.workers.dev/watch/3787/15+thyroid+part+1.mp4?hash=AgADLx"
+    }
+]
+}
