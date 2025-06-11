@@ -134,11 +134,11 @@ export class LectureList {
         lectureCard.classList.add('completed-lecture');
       }
       
+      const leftSection = document.createElement('div');
+      leftSection.className = 'lecture-left-section';
+      
       const title = document.createElement('h3');
       title.textContent = lecture.title;
-      
-      const rightSection = document.createElement('div');
-      rightSection.className = 'lecture-right-section';
       
       const buttonContainer = document.createElement('div');
       buttonContainer.className = 'button-container';
@@ -153,6 +153,12 @@ export class LectureList {
       downloadButton.innerHTML = '<i class="fas fa-download"></i> Download';
       downloadButton.onclick = () => this.openDownloadPage(lecture.streamingUrl);
       
+      buttonContainer.appendChild(streamButton);
+      buttonContainer.appendChild(downloadButton);
+      
+      leftSection.appendChild(title);
+      leftSection.appendChild(buttonContainer);
+      
       const completionCheckbox = document.createElement('button');
       completionCheckbox.className = 'completion-checkbox';
       completionCheckbox.innerHTML = isCompleted ? '<i class="fas fa-check"></i>' : '<i class="far fa-square"></i>';
@@ -161,14 +167,8 @@ export class LectureList {
       }
       completionCheckbox.onclick = () => this.toggleLectureCompletion(this.currentPlatform, this.currentSubject, lecture.title);
       
-      buttonContainer.appendChild(streamButton);
-      buttonContainer.appendChild(downloadButton);
-      
-      rightSection.appendChild(buttonContainer);
-      rightSection.appendChild(completionCheckbox);
-      
-      lectureCard.appendChild(title);
-      lectureCard.appendChild(rightSection);
+      lectureCard.appendChild(leftSection);
+      lectureCard.appendChild(completionCheckbox);
       container.appendChild(lectureCard);
     });
 
